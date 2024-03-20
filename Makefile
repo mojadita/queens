@@ -44,7 +44,7 @@ install: $(targets) $(mans)
 	$(INSTALL) -o $(own) -g $(grp) -m $(dmod) -d $(man1dir)
 	$(INSTALL) -o $(own) -g $(grp) -m $(dmod) -d $(bindir)
 	$(INSTALL) -o $(own) -g $(grp) -m $(xmod) $(targets) $(bindir)
-	$(INSTALL) -o $(own) -g $(grp) -m $(xmod) $(mans) $(man1dir)
+	$(INSTALL) -o $(own) -g $(grp) -m $(fmod) $(mans) $(man1dir)
 
 uninstall:
 	-for i in $(targets); \
