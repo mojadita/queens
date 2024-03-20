@@ -1,0 +1,6 @@
+knight
+queens
+*.core
+core
+*.o
+*~
