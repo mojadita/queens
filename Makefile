@@ -32,7 +32,7 @@ fmod        ?= 0444
 dmod        ?= 0555
 
 .PHONY: all clean install uninstall doc
-.SUFFIXES: .1 .1.gz .1.pdf
+.SUFFIXES: .1.in .1 .1.gz .1.pdf
 
 all: $(targets)
 clean:
@@ -61,3 +61,7 @@ uninstall:
 
 .1.1.pdf:
 	$(GROFF) $(ROFFOPTS) -mdoc -Tpdf $< >$@
+
+.1.in.1:
+	sed -e "s/@DATE@/$$(date +%b\\\/%Y)/g" < '$<' > '$@'
+
