@@ -13,7 +13,7 @@
 #include <string.h>
 
 #define DEFAULT_WIDTH  (80)
-#define DEFAULT_DIM    (8)
+#define DEFAULT_DIM    (5)
 
 /* CELL_SZ == strlen(HOR_LINE) && CELL_SZ == strlen(QUEEN)
  *     && CELL_SZ == strlen(EMPTY) */

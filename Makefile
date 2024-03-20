@@ -27,8 +27,9 @@ GZOPTS      ?= -v
 
 own         ?= root
 grp         ?= wheel
-xmod        ?= 0555
+xmod        ?= 0111
 fmod        ?= 0444
+dmod        ?= 0555
 
 .PHONY: all clean install uninstall doc
 .SUFFIXES: .1 .1.gz .1.pdf
