@@ -1,0 +1,68 @@
+.Dd $Mdocdate$
+.Dt KNIGHT 1
+.Os
+.Sh NAME
+.Nm knight
+.Nd Chess roundtrip solution for a sized board
+.Sh SYNOPSIS
+.Nm
+.Op Fl d
+.Op Fl n Ar board_size
+.Op Fl w Ar width
+.Sh DESCRIPTION
+The
+.Nm
+program calculates all the solutions for a chess knight board roundtrip
+visiting each square once. (and only once)
+.Pp
+.Nm
+prints its output trying to guess the line width and putting as many
+solutions as possible in the same row, so no printing is made until all
+the solutions in one row have been collected.
+The output of each solution is composed of the solution number on top of
+the board with all boards positioned horizontally to fit in one screen,
+as follows:
+.Bd -literal -offset 1em
+
+Starting at row=0, col=0
+1:                 2:                 3:
++--+--+--+--+--+   +--+--+--+--+--+   +--+--+--+--+--+
+| 1|14|19| 8|25|   | 1|12| 7|16|25|   | 1|12| 7|14|25|
++--+--+--+--+--+   +--+--+--+--+--+   +--+--+--+--+--+
+| 6| 9| 2|13|18|   | 6|17| 2|13| 8|   | 6|15| 2|19| 8|
++--+--+--+--+--+   +--+--+--+--+--+   +--+--+--+--+--+
+|15|20| 7|24| 3|   |11|20|15|24| 3|   |11|20|13|24| 3|
++--+--+--+--+--+   +--+--+--+--+--+   +--+--+--+--+--+
+|10| 5|22|17|12|   |18| 5|22| 9|14|   |16| 5|22| 9|18|
++--+--+--+--+--+   +--+--+--+--+--+   +--+--+--+--+--+
+|21|16|11| 4|23|   |21|10|19| 4|23|   |21|10|17| 4|23|
++--+--+--+--+--+   +--+--+--+--+--+   +--+--+--+--+--+
+\&...
+.Ed
+.Sh OPTIONS
+.Nm
+supports the following list of options.
+.Bl -tag
+.It Fl d
+Prints a huge amount of debug info to standard output, consisting en
+all the guesses 
+.Nm
+makes while it is trying to fit new knight positions.
+.It Fl n Ar board_size
+configures the board size, for a
+.Arg board_size
+given, it generates solutions for a board of size
+.Ar board_siz
+x
+.Ar board_siz .
+.It Fl w Ar line_width
+.Nm uses the
+.Ar line_width
+argument to enforce the line width in the output.
+This is useful when the output is to be directed to a file, and the
+desired width is not the same as the one determined by the terminal.
+The default value is determined by the environment variable
+.Cm COLUMNS
+if available or fixed to 80 characters per line.
+.Sh AUTHOR
+.An Luis Colorado Aq luiscoloradourcola@gmail.com

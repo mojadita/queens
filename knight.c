@@ -302,12 +302,26 @@ int main(int argc, char **argv)
     P(line_w);
 #undef P
 
-    int dim1_2 = (DIM + 1) / 2;
-    for (int r = 0; r < dim1_2; r++)
-        for (int c = r; c < dim1_2; c++)
-            check_boards(r, c, 1);
+	/* we only print the solutions starting on the top left triangle
+	 * that goes from the top left corner, the middle top square, and
+	 * the board center square, as the other solutions are of no
+	 * interest, while they can be obtained by mirroring/rotating one
+	 * of these solutions */
+	int top_center = (DIM + 1) / 2; /* middle top square */
+	char *sep = "";
+    for (int r = 0; r < top_center; r++)
+    for (int c = r; c < top_center; c++) {
+		/* get the number of solutions at start */
+		unsigned long sol0 = print_boardset();
+		printf("%sStarting at row=%d, col=%d\n", sep, r, c);
+		sep = ",\n\n";
+		check_boards(r, c, 1);
 
-    unsigned long sol = print_boardset();
+		/* end print and get the number of solutions at end */
+		unsigned long sol1 = print_boardset();
+		printf("  %lu solutions", sol1 - sol0);
+	}
+	printf("\nTotal solutions: %lu\n", print_boardset()); /* last total */
 
-    printf("%lu solutions\n", sol);
+	return EXIT_SUCCESS;
 } /* main */

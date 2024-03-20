@@ -101,12 +101,15 @@ print_boardset(void)
         return SOLUTION;
 
     /* full board width is */
-    static unsigned board_w = DIM * (CELL_SZ + BORDER_SZ)
-                     + BORDER_SZ;
+    static unsigned board_w = 0,
+                    line_w;
+    if (!board_w) {
+        /* dynamic initialization on first call */
+        board_w = DIM * (CELL_SZ + BORDER_SZ) + BORDER_SZ;
 
-    /* so full line width is */
-    static unsigned line_w  = N * (board_w + GAP_SZ)
-                     - GAP_SZ;
+        /* so full line width is */
+        line_w  = N * (board_w + GAP_SZ) - GAP_SZ;
+    }
 
     /* header line */
     int blank_width = 0;

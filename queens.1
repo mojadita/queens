@@ -1,0 +1,65 @@
+.Dd $Mdocdate$
+.Dt QUEENS 1
+.Os
+.Sh NAME
+.Nm queens
+.Nd Queens on a chess board.
+.Sh SYNOPSIS
+.Nm
+.Op Fl d
+.Op Fl n Ar board_size
+.Op Fl w Ar width
+.Sh DESCRIPTION
+The
+.Nm
+program calculates all the solutions to position a set of N chees queens
+without threatening each other.
+.Pp
+.Nm
+prints its output trying to guess the line width and putting as many
+solutions as possible in the same row, so no printing is made until all
+the solutions in one row have been collected.
+The output of each solution is composed of the solution number on top of
+the board with all boards positioned horizontally to fit in one screen,
+as follows:
+.Bd -literal -offset 1em
+1:                  2:
++---+---+---+---+   +---+---+---+---+
+|   |(@)|   |   |   |   |   |(@)|   |
++---+---+---+---+   +---+---+---+---+
+|   |   |   |(@)|   |(@)|   |   |   |
++---+---+---+---+   +---+---+---+---+
+|(@)|   |   |   |   |   |   |   |(@)|
++---+---+---+---+   +---+---+---+---+
+|   |   |(@)|   |   |   |(@)|   |   |
++---+---+---+---+   +---+---+---+---+
+
+2 solutions
+.Ed
+.Sh OPTIONS
+.Nm
+supports the following list of options.
+.Bl -tag
+.It Fl d
+Prints a huge amount of debug info to standard output, consisting en
+all the guesses 
+.Nm
+makes while it is trying to fit new queen positions.
+.It Fl n Ar board_size
+configures the board size, for a
+.Arg board_size
+given, it generates solutions for a board of size
+.Ar board_siz
+x
+.Ar board_siz .
+.It Fl w Ar line_width
+.Nm uses the
+.Ar line_width
+argument to enforce the line width in the output.
+This is useful when the output is to be directed to a file, and the
+desired width is not the same as the one determined by the terminal.
+The default value is determined by the environment variable
+.Cm COLUMNS
+if available or fixed to 80 characters per line.
+.Sh AUTHOR
+.An Luis Colorado Aq luiscoloradourcola@gmail.com
